@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  jenkins:
+    image: jenkinsci/blueocean:latest
+    privileged    container_name: jenkins-blueocean
+    user: root
+    ports:
+      - 8080:8080
+      - 443:8443
+      - 50000:50000
+    environment:
+      - JAVA_OPTS:-Djava.awt.headless=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./srv/data/jenkins_data:/jenkins_home
+      - ./srv/data/jenkins:/var/jenkins_config
+
+volumes:
+  jenkins_data:
+    driver: local
+  jenkins:
+    driver: local
