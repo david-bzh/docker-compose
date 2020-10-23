@@ -3,7 +3,7 @@ version: "3"
 services:
   jenkins:
     image: jenkinsci/blueocean:latest
-    privileged    container_name: jenkins-blueocean
+    container_name: jenkins-blueocean
     user: root
     ports:
       - 8080:8080
